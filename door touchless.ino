@@ -9,16 +9,11 @@
 long durasi;
 int jarak;
 
-char auth[] = "N4PtA82UY078RdNH_IqxnMaakppGzb_y";
-char ssid[] = "A50";
-char pass[] = "danang3776";
+char auth[] = "";
+char ssid[] = "";
+char pass[] = "";
 
 BlynkTimer timer;
-
-//void myTimerEvent()
-//{
-//  Blynk.virtualWrite(V1, jarak);
-//}
 
 Servo myservo;
 
@@ -48,24 +43,12 @@ void loop()
   Serial.println("cm");
   delay(500);
 
-//  jarak = digitalRead(echoPin);
-//
-//  if (jarak < 10){
-//    myservo.write(100);
-//    Blynk.notify("Pintu Terbuka");
-//    delay(3000);
-//  }
-//  else{
-//    myservo.write(0);
-//  }
-  
   Blynk.run();
   timer.run(); // Initiates BlynkTimer
 }
 
 void myTimerEvent()
 {
-  //myservo.write(90);
   durasi = digitalRead(echoPin);
   Blynk.virtualWrite(V1, durasi);
 
@@ -76,6 +59,5 @@ void myTimerEvent()
   }else
   {
     myservo.write(0);
-    //Blynk.notify("Pintu Tertutup");
   }
 }
